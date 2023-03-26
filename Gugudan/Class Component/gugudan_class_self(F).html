@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>구구단 게임_form내 구구단 로직적용</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      "use strict";
+
+      // class형 data 변하는 state가 5개 (1, 2 숫자, input창, 결과값2)
+      class GuGuDan extends React.Component {         
+          // 5개 변하는 this.state, data영역 
+          // constructor(props), super(props), this 없애고 state만 써도 됨
+          state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+            result1: '',
+            result2: '',
+          };        
+
+        // 함수빼오기 onSubmit, onChange
+        onSubmit = (e) => {
+          e.preventDefault();
+          if(parseInt(this.state.value) === this.state.first * this.state.second) {
+            // 과거값과 미래값적용을 위해 prevState 매개체 사용
+            /* setState() 함수내 state가 있으면 setState((prevState) => {
+              return{
+                result1: '제출답' + prevState.value,
+              }
+            }); */
+            this.setState((prevState) => {
+              return {
+                result1: '제출답: ' + prevState.value,
+                result2: '정답!',
+                first: Math.ceil(Math.random() * 9),
+                second: Math.ceil(Math.random() * 9),
+                value: '',
+              }
+            });
+            // this.input.focus(); input창에만 반영해도 됨 (18버전이라서?)
+          } else {
+            this.setState({
+              result1: '제출답: ' + this.state.value,
+              result2: ' Try Agin! ', 
+              value: '',
+            });
+            // this.input.focus();
+          }
+        } 
+        
+        onChange = (e) => {
+          this.setState({value: e.target.value})
+        }
+
+        input; // 외부선언
+
+        onRefInput = (f) => {this.input = f;}
+
+        // 화면반영
+        render() {
+          return( // 3개의 div 영역 필요, jsx와 js를 같이 쓰지 말기 -> 밖으로 함수빼기
+            // <form>에 구구단 로직적용, onSubmit 함수사용
+            // input창안에 focus활성화 -> ref = {() => {}} 사용
+            <>
+              <div> {this.state.first} 곱하기 {this.state.second} 는?</div>              
+              <form onSubmit = {this.onSubmit}>
+                <input
+                  ref = {this.onRefInput}
+                  type="number" value = {this.state.value} 
+                  onChange = {this.onChange}
+                />
+                <button>입력!</button>
+              </form>
+              <div> {this.state.result1} </div>
+              <div> {this.state.result2} </div>
+            </>  
+          );
+        }
+      }      
+      
+    </script>
+    <script type="text/babel">      
+      // React 18버전
+      ReactDOM.createRoot(document.querySelector('#root')).render(
+        <>
+          <GuGuDan />          
+        </>
+      );
+    </script>
+  </body>
+</html>

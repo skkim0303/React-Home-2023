@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>구구단 게임</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      "use strict";
+
+      class GuGUDan extends React.Component {
+        constructor(props) {
+          super(props);
+          // 변하는 것은 state다. 
+          this.state = { // 6곱하기5는?에서 숫자만, 입력값, 딩동댕 or 땡 
+            first: Math.ceil(Math.random() * 9), // 무작위 1~9 
+            second: Math.ceil(Math.random() * 9), // 무작위 1~9 
+            value: '',
+            result: '',
+          };
+        }
+
+        onSubmit = (e) => {
+                  e.preventDefault();
+                  // 구구단 로직 
+                  if (parseInt(this.state.value) === this.state.first * this.state.second) {
+                    this.setState({
+                      result: '정답!',
+                      first: Math.ceil(Math.random() * 9), // 무작위 1~9 
+                      second: Math.ceil(Math.random() * 9), // 무작위 1~9 
+                      value: '', // 다시 비워줘야해서 
+                    });
+                  } else {
+                    this.setState({
+                      result: '땡!',                      
+                      value: '',
+                    });
+                  }
+                }
+
+        onChange = (e) => {this.setState({value: e.target.value})};
+
+        render() {
+          return ( // state를 설정했으면 나머지 태그는 이곳 (6곱하기5는?, input창, 결과값)
+          // <div>태그안 {}안에는 JS사용가능, xml인 jsx이므로 input창 마감
+            /* <div> 아래까지 하면 onChannge Handler error           
+              <div>{this.state.first}곱하기{this.state.second}는? </div> 
+              <form action="">
+                <input type="number" value={this.state.value} /> 
+                <button>입력</button>
+              </form>
+              <div> {this.state.result} </div>
+            </div> */
+
+            /* <div>            
+              <div>{this.state.first}곱하기{this.state.second}는? </div> 
+              <form action=""> 
+                <input type="number" value={this.state.value} 
+                // input.onchange(e) = (e) => { console.log(e.target.value) }
+                // input.onchange(e) function { console.log(e.target.value) }
+                // JSX식으로 onChange{(e) => this.setState({value: e.target.value})}
+                // 수동으로 바꿀값들만 state로 만들어야 함
+                // form에는 onSubmit 필요, 구구단 로직 들어가야 함
+                onChange={(e) => this.setState({value: e.target.value})}
+                /> 
+                <button>입력</button>
+              </form>
+              <div> {this.state.result} </div>
+            </div> */
+
+            <div>            
+              <div>{this.state.first}곱하기{this.state.second}는? </div> 
+              <form onSubmit = { this.onSubmit }> 
+                <input type="number" value={this.state.value} 
+                // input.onchange(e) = (e) => { console.log(e.target.value) }
+                // input.onchange(e) function { console.log(e.target.value) }
+                // JSX식으로 onChange{(e) => this.setState({value: e.target,value})}
+                // 수동으로 바꿀값들만 state로 만들어야 함
+                // form에는 onSubmit 필요, 구구단 로직 들어가야 함
+                // setState는 정답일때 화면이 어떻게 바뀔지 적용
+                onChange={this.onChange}
+                /> 
+                <button>입력</button>
+              </form>
+              <div> {this.state.result} </div>
+            </div>
+
+          );
+        }
+      }
+
+      
+      
+    </script>
+    <script type="text/babel">
+      
+      // React 18버전
+      ReactDOM.createRoot(document.querySelector('#root')).render(<GuGUDan />);
+
+    </script>
+  </body>
+</html>
