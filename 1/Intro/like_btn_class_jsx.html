@@ -31,7 +31,7 @@
         if (this.state.liked) { // 참이면 
           return 'VERY NICE!'
         }   
-        return ( // 화면 부분, jsx이기에 babel 적용
+        return ( // 화면 부분, jsx이기에 babel 적용, xml이기에 button 소문자
           <button onClick={() => this.setState({ liked: true })}>
             좋아요~
           </button>
@@ -43,7 +43,13 @@
     // React.createElement(LikeButton)을 jsx로 바꾸어주어야 함
     // ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
     // ReactDOM.render(<LikeButton />, document.querySelector('#root')); // 17버전
-    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); // 18버전
+    ReactDOM.createRoot(document.querySelector('#root')).render(
+      <div>
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+      </div>
+    ); // 18버전
 
   </script>
  

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Like Button: Function Component</title>    
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+  <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+  
+  <!-- jsx사용을 위해서는 babel cdn필요 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    'use strict';
+
+    // this쓸일이 없다. 화살표 함수로 바꾸어 주어도 됨    
+    // function LikeButton() {
+    //   // 변하는 data 선언, 구조분해는 배열로
+    //   const [liked, setLiked] = React.useState(false);
+
+    //   // 화면 작업
+    //   if (liked) {
+    //     return 'Very NIce~';
+    //   }
+    //   return (
+    //     <button onClick={() => {setLiked(true)}}>좋아요</button>
+    //   );
+    // } 
+    
+    const LikeButton = () => {
+      // 변하는 data 선언, 구조분해는 배열로
+      const [liked, setLiked] = React.useState(false);
+
+      // 화면 작업
+      if (liked) {
+        return 'Very NIce~';
+      }
+      return (
+        <button onClick={() => { setLiked(true) }}>좋아요</button>
+      );
+    } 
+   
+  </script>
+  <script type="text/babel">
+    // React.createElement(LikeButton)을 jsx로 바꾸어주어야 함
+    // ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
+    // ReactDOM.render(<LikeButton />, document.querySelector('#root')); // 17버전
+    ReactDOM.createRoot(document.querySelector('#root')).render(
+      <div>
+        <LikeButton />       
+      </div>
+    ); // 18버전
+
+  </script>
+ 
+</body>
+</html>
