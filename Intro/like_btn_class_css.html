@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Like Button: class type</title>    
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+  <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>   
+  
+  <!-- CSS Application -->
+  <style>
+    
+    body {
+      font-family: 'Century Gothic', sans-serif;
+      font-weight: bold;
+      background-color: #f0f0f0;
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    'use strict';
+
+    class LikeButton extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {liked:false};
+      }
+      render() {
+        if(this.state.liked) {
+          return 'LIKE'
+        }
+        return (
+          <button onClick={() => this.setState({liked:true})}>좋아요</button>
+        );
+      }
+    }
+    
+  </script>
+  <script type="text/babel">    
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); 
+  </script>
+ 
+</body>
+</html>
