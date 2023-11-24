@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>구구단 게임_class component</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      "use strict";
+
+      class GuGuDan extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '', // event (onChange 또는 onInput) 발생하는 곳
+            result1: '',
+            result2: '',
+          };
+        }
+        
+        onSubmit = (e) => { // 구구단 로직에 따른 정답 처리 
+          e.preventDefault();
+          if(parseInt(this.state.value) === this.state.first * this.state.second) {
+            this.setState({
+              result1: '제출한 답: '+this.state.value, // 정답표시 먼저
+              result2: 'Correct', // 정답표시 먼저
+              first: Math.ceil(Math.random() * 9), // 첫번째 random 다시 나오고
+              second: Math.ceil(Math.random() * 9), // 두번째 random
+              value: '', // value 값 지워주고
+            });
+          } else {
+            this.setState({
+              result1: '제출한 답: '+this.state.value, // 정답표시 먼저
+              result2: 'Try Again!',
+              value: '',
+            });
+          }
+        }
+
+        onChange = (e) => this.setState({value: e.target.value});
+
+        input;
+
+        onRefInput = (c) => {this.input.c};
+
+        render() {
+          return(  // JSX 문법 및 태그로 구분
+            <> 
+              <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+              <form onSubmit = {this.onSubmit}>
+                <input 
+                  ref = {this.onRefInpuit}
+                  type="number" value={this.state.value}
+                  // 반응하는 event handler: onChange사용
+                  onChange = {this.onChange}
+                />
+                <button>확인</button>
+              </form>
+              <div></div>
+              <div>{this.state.result1}</div>
+              <div>{this.state.result2}</div>
+            </>
+          );
+        }
+      }
+
+    </script>
+    <script type="text/babel">      
+      // React 18버전
+      ReactDOM.createRoot(document.querySelector('#root')).render(
+        <>
+          <GuGuDan />          
+        </>
+      );
+    </script>
+  </body>
+</html>
