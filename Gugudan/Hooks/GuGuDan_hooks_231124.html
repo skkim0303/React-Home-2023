@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React GuGuDan: React Hooks</title>    
+  <title>GuGuDan: React Hooks on 231124</title>    
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
   <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>   
+  <link rel="stylesheet" href="gugudan.css" type="text/css"> 
 </head>
 
 <body>
@@ -18,52 +19,52 @@
     'use strict';
 
     const GuGuDan = () => {
-
-      // state되는 항목들을 개별적으로, 초기 data값 적용 
+      // data area: 변수 set변수 = react.useState(초기값);
       const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
       const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
       const [value, setValue] = React.useState('');
       const [result1, setResult1] = React.useState('');
       const [result2, setResult2] = React.useState('');
-      const inputRef = React.useRef();
+      const inputRef = React.useRef(null);
 
-      const onSubmitForm = (e) => { // 구구단 로직, 이벤트리스너
+      const onSubmitForm = (e) => { // submit이 되었을때 구구단 로직에 맞는 결과표시
         e.preventDefault();
-        if(parseInt(value) === first * second) {
-          setResult1('제출답: ' + value);
-          setResult2('정답');
+        if (parseInt(value) === first * second) {
+          setResult1('제출한 답: ' + value);
+          setResult2('Correct!');
           setFirst(Math.ceil(Math.random() * 9));
           setSecond(Math.ceil(Math.random() * 9));
           setValue('');
-          inputRef.current.focus(); 
+          inputRef.current.focus();
         } else {
-          setResult1('제출답: ' + value);
+          setResult1('제출한 답: ' + value);
           setResult2('Try Again!');
           setValue('');
           inputRef.current.focus();
         }
-      }    
+      }
 
-      const onChangeInput = (e) => { // input되는 방식, 이벤트리스너
+      const onChangeInput = (e) => { // 초기값에서 수동으로 바꾸어 줌: setValue
         setValue(e.target.value);
       }
-      
-      console.log('렌더링');
 
-      return ( // 화면 영역, 구구단 기본영역, form, input 등
+      return ( // logic & screen area : setStae역할 => setValue가
         <>
-          <div>{first} 곱하기 {second} = ?</div>
-          <form onSubmit={onSubmitForm}>
-            <input type="" ref={inputRef} value={value} onChange={onChangeInput}/>
-            <button>입력</button>
-          </form>
-          <div id="result1">{result1}</div>          
-          <div id="result2">{result2}</div>          
-        </>
+          <div>{first} 곱하기 {second}는? </div>
+          <form onSubmit = {onSubmitForm}>
+            <input 
+              type="number" value = {value} onChange = {onChangeInput} 
+              ref={inputRef}
+            />
+            <button>확인</button>
+          </form>          
+          <div className={result2 === 'Correct!' ? 'correct' : 'incorrect'}>{result1}</div>
+          <div className={result2 === 'Correct!' ? 'correct' : 'incorrect'}>{result2}</div>
+        </>  
       );
     }
-    
   </script>
+
   <script type="text/babel">    
     ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />); 
   </script>
