@@ -1,11 +1,23 @@
+#frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border: 1px solid;
+  margin: 10px;
+  background-color: whitesmoke;
+}
+
 body {
   font-family: 'Arial', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 400px;
   margin: 0;
   text-align: center;
+  background-color: bisque;
 }
 
 form {
