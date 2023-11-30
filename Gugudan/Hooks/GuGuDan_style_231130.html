@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuGuDan: React Hooks on 231124</title>    
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.js"></script> -->
+  <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.js"></script> -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>   
+  
+  <style>
+    #frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      border: 1px solid;
+      margin: 10px;
+      background-color: whitesmoke;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+      margin: 0;
+      text-align: center;
+      background-color: bisque;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      margin-top: 10px;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div id="frame">  <!--전체결과 frame 작업-->
+    <div id="root"></div>
+  </div>
+
+  <script type="text/babel">
+    'use strict';
+
+    const GuGuDan = () => {
+      // data area: 변수 set변수 = react.useState(초기값);
+      const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+      const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+      const [value, setValue] = React.useState('');
+      const [result1, setResult1] = React.useState('');
+      const [result2, setResult2] = React.useState('');
+      const inputRef = React.useRef(null);
+
+      const onSubmitForm = (e) => { // submit이 되었을때 구구단 로직에 맞는 결과표시
+        e.preventDefault();
+        if (parseInt(value) === first * second) {
+          setResult1('제출한 답: ' + value);
+          setResult2('Correct!');
+          setFirst(Math.ceil(Math.random() * 9));
+          setSecond(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();
+        } else {
+          setResult1('제출한 답: ' + value);
+          setResult2('Try Again!');
+          setValue('');
+          inputRef.current.focus();
+        }
+      }
+
+      const onChangeInput = (e) => { // 초기값에서 수동으로 바꾸어 줌: setValue
+        setValue(e.target.value);
+      }
+
+      return ( // logic & screen area : setStae역할 => setValue가
+        <>
+          <div>{first} 곱하기 {second}는? </div>
+          <form onSubmit = {onSubmitForm}>
+            <input 
+              type="number" value = {value} onChange = {onChangeInput} 
+              ref={inputRef}
+            />
+            <button>확인</button>
+          </form>          
+          <div className={result2 === 'Correct!' ? 'correct' : 'incorrect'}>{result1}</div>
+          <div className={result2 === 'Correct!' ? 'correct' : 'incorrect'}>{result2}</div>
+        </>  
+      );
+    }
+  </script>
+
+  <script type="text/babel">    
+    ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />); 
+  </script>
+ 
+</body>
+</html>

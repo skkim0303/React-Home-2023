@@ -16,7 +16,7 @@ module.exports = {
 
   module: {
     rules: [{ // 여러개 규칙 적용 가능
-      test: /\.jsx?/,
+      test: /\.jsx?/, // 정규표현식, 규칙을 적용할 파일들 test
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env', '@babel/preset-react'],
