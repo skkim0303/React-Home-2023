@@ -1,6 +1,7 @@
 const React = require('react');
 // const { Component } = React;
-import './gugudan.css';
+
+
 
 // 구구단 코드 
 const GuGuDan = () => {

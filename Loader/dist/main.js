@@ -1,0 +1,1 @@
+(()=>{"use strict";document.getElementById("root").innerHTML="어렵지만 할수있다.더 해보자 3"})();

@@ -3,8 +3,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// import './gugudan.css';
+
 // 분리
 const GuGuDan = require('./GuGuDan.jsx');
+
 
 
 ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />);

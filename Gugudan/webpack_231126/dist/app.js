@@ -13,10 +13,9 @@
 /*!*********************!*\
   !*** ./GuGuDan.jsx ***!
   \*********************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gugudan_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gugudan.css */ \"./gugudan.css\");\n/* harmony import */ var _gugudan_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_gugudan_css__WEBPACK_IMPORTED_MODULE_0__);\n/* module decorator */ module = __webpack_require__.hmd(module);\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }\nfunction _iterableToArrayLimit(r, l) { var t = null == r ? null : \"undefined\" != typeof Symbol && r[Symbol.iterator] || r[\"@@iterator\"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t[\"return\"] && (u = t[\"return\"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n// const { Component } = React;\n\n\n// 구구단 코드 \nvar GuGuDan = function GuGuDan() {\n  // data area: 변수 set변수 = react.useState(초기값);\n  var _React$useState = React.useState(Math.ceil(Math.random() * 9)),\n    _React$useState2 = _slicedToArray(_React$useState, 2),\n    first = _React$useState2[0],\n    setFirst = _React$useState2[1];\n  var _React$useState3 = React.useState(Math.ceil(Math.random() * 9)),\n    _React$useState4 = _slicedToArray(_React$useState3, 2),\n    second = _React$useState4[0],\n    setSecond = _React$useState4[1];\n  var _React$useState5 = React.useState(''),\n    _React$useState6 = _slicedToArray(_React$useState5, 2),\n    value = _React$useState6[0],\n    setValue = _React$useState6[1];\n  var _React$useState7 = React.useState(''),\n    _React$useState8 = _slicedToArray(_React$useState7, 2),\n    result1 = _React$useState8[0],\n    setResult1 = _React$useState8[1];\n  var _React$useState9 = React.useState(''),\n    _React$useState10 = _slicedToArray(_React$useState9, 2),\n    result2 = _React$useState10[0],\n    setResult2 = _React$useState10[1];\n  var inputRef = React.useRef(null);\n  var onSubmitForm = function onSubmitForm(e) {\n    // submit이 되었을때 구구단 로직에 맞는 결과표시\n    e.preventDefault();\n    if (parseInt(value) === first * second) {\n      setResult1('제출한 답: ' + value);\n      setResult2('Correct!');\n      setFirst(Math.ceil(Math.random() * 9));\n      setSecond(Math.ceil(Math.random() * 9));\n      setValue('');\n      inputRef.current.focus();\n    } else {\n      setResult1('제출한 답: ' + value);\n      setResult2('Try Again!');\n      setValue('');\n      inputRef.current.focus();\n    }\n  };\n  var onChangeInput = function onChangeInput(e) {\n    // 초기값에서 수동으로 바꾸어 줌: setValue\n    setValue(e.target.value);\n  };\n  return (\n    /*#__PURE__*/\n    // logic & screen area : setStae역할 => setValue가\n    React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"div\", null, first, \" \\uACF1\\uD558\\uAE30 \", second, \"\\uB294? \"), /*#__PURE__*/React.createElement(\"form\", {\n      onSubmit: onSubmitForm\n    }, /*#__PURE__*/React.createElement(\"input\", {\n      type: \"number\",\n      value: value,\n      onChange: onChangeInput,\n      ref: inputRef\n    }), /*#__PURE__*/React.createElement(\"button\", null, \"\\uD655\\uC778\")), /*#__PURE__*/React.createElement(\"div\", {\n      className: result2 === 'Correct!' ? 'correct' : 'incorrect'\n    }, result1), /*#__PURE__*/React.createElement(\"div\", {\n      className: result2 === 'Correct!' ? 'correct' : 'incorrect'\n    }, result2))\n  );\n};\nmodule.exports = GuGuDan;\n\n//# sourceURL=webpack://gugudan_home/./GuGuDan.jsx?");
+eval("function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }\nfunction _iterableToArrayLimit(r, l) { var t = null == r ? null : \"undefined\" != typeof Symbol && r[Symbol.iterator] || r[\"@@iterator\"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t[\"return\"] && (u = t[\"return\"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n// const { Component } = React;\n\n// 구구단 코드 \nvar GuGuDan = function GuGuDan() {\n  // data area: 변수 set변수 = react.useState(초기값);\n  var _React$useState = React.useState(Math.ceil(Math.random() * 9)),\n    _React$useState2 = _slicedToArray(_React$useState, 2),\n    first = _React$useState2[0],\n    setFirst = _React$useState2[1];\n  var _React$useState3 = React.useState(Math.ceil(Math.random() * 9)),\n    _React$useState4 = _slicedToArray(_React$useState3, 2),\n    second = _React$useState4[0],\n    setSecond = _React$useState4[1];\n  var _React$useState5 = React.useState(''),\n    _React$useState6 = _slicedToArray(_React$useState5, 2),\n    value = _React$useState6[0],\n    setValue = _React$useState6[1];\n  var _React$useState7 = React.useState(''),\n    _React$useState8 = _slicedToArray(_React$useState7, 2),\n    result1 = _React$useState8[0],\n    setResult1 = _React$useState8[1];\n  var _React$useState9 = React.useState(''),\n    _React$useState10 = _slicedToArray(_React$useState9, 2),\n    result2 = _React$useState10[0],\n    setResult2 = _React$useState10[1];\n  var inputRef = React.useRef(null);\n  var onSubmitForm = function onSubmitForm(e) {\n    // submit이 되었을때 구구단 로직에 맞는 결과표시\n    e.preventDefault();\n    if (parseInt(value) === first * second) {\n      setResult1('제출한 답: ' + value);\n      setResult2('Correct!');\n      setFirst(Math.ceil(Math.random() * 9));\n      setSecond(Math.ceil(Math.random() * 9));\n      setValue('');\n      inputRef.current.focus();\n    } else {\n      setResult1('제출한 답: ' + value);\n      setResult2('Try Again!');\n      setValue('');\n      inputRef.current.focus();\n    }\n  };\n  var onChangeInput = function onChangeInput(e) {\n    // 초기값에서 수동으로 바꾸어 줌: setValue\n    setValue(e.target.value);\n  };\n  return (\n    /*#__PURE__*/\n    // logic & screen area : setStae역할 => setValue가\n    React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"div\", null, first, \" \\uACF1\\uD558\\uAE30 \", second, \"\\uB294? \"), /*#__PURE__*/React.createElement(\"form\", {\n      onSubmit: onSubmitForm\n    }, /*#__PURE__*/React.createElement(\"input\", {\n      type: \"number\",\n      value: value,\n      onChange: onChangeInput,\n      ref: inputRef\n    }), /*#__PURE__*/React.createElement(\"button\", null, \"\\uD655\\uC778\")), /*#__PURE__*/React.createElement(\"div\", {\n      className: result2 === 'Correct!' ? 'correct' : 'incorrect'\n    }, result1), /*#__PURE__*/React.createElement(\"div\", {\n      className: result2 === 'Correct!' ? 'correct' : 'incorrect'\n    }, result2))\n  );\n};\nmodule.exports = GuGuDan;\n\n//# sourceURL=webpack://gugudan_home/./GuGuDan.jsx?");
 
 /***/ }),
 
@@ -26,7 +25,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gug
   \********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("// 기본적으로 모든 코드는 이곳에, 양이 많을 경우 별도 코드 분리\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n// 분리\nvar GuGuDan = __webpack_require__(/*! ./GuGuDan.jsx */ \"./GuGuDan.jsx\");\nReactDOM.createRoot(document.querySelector('#root')).render( /*#__PURE__*/React.createElement(GuGuDan, null));\n\n//# sourceURL=webpack://gugudan_home/./client.jsx?");
+eval("// 기본적으로 모든 코드는 이곳에, 양이 많을 경우 별도 코드 분리\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n// import './gugudan.css';\n\n// 분리\nvar GuGuDan = __webpack_require__(/*! ./GuGuDan.jsx */ \"./GuGuDan.jsx\");\nReactDOM.createRoot(document.querySelector('#root')).render( /*#__PURE__*/React.createElement(GuGuDan, null));\n\n//# sourceURL=webpack://gugudan_home/./client.jsx?");
 
 /***/ }),
 
@@ -100,9 +99,10 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /*!*********************!*\
   !*** ./gugudan.css ***!
   \*********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/css-loader/dist/cjs.js):\\n\\nSyntaxError\\n\\n(2:7) E:\\\\2023 Home_React\\\\React-Home-2023\\\\Gugudan\\\\webpack_231126\\\\gugudan.css Unknown word\\n\\n \\u001b[90m 1 | \\u001b[39m\\n\\u001b[1m\\u001b[31m>\\u001b[39m\\u001b[22m\\u001b[90m 2 | \\u001b[39m      import API from \\u001b[32m\\\"!./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\\\"\\u001b[39m\\u001b[33m;\\u001b[39m\\n \\u001b[90m   | \\u001b[39m      \\u001b[1m\\u001b[31m^\\u001b[39m\\u001b[22m\\n \\u001b[90m 3 | \\u001b[39m      import domAPI from \\u001b[32m\\\"!./node_modules/style-loader/dist/runtime/styleDomAPI.js\\\"\\u001b[39m\\u001b[33m;\\u001b[39m\\n \\u001b[90m 4 | \\u001b[39m      import insertFn from \\u001b[32m\\\"!./node_modules/style-loader/dist/runtime/insertBySelector.js\\\"\\u001b[39m\\u001b[33m;\\u001b[39m\\n\");\n\n//# sourceURL=webpack://gugudan_home/./gugudan.css?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://gugudan_home/./gugudan.css?");
 
 /***/ })
 
@@ -136,50 +136,6 @@ eval("throw new Error(\"Module build failed (from ./node_modules/css-loader/dist
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/harmony module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.hmd = (module) => {
-/******/ 			module = Object.create(module);
-/******/ 			if (!module.children) module.children = [];
-/******/ 			Object.defineProperty(module, 'exports', {
-/******/ 				enumerable: true,
-/******/ 				set: () => {
-/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
-/******/ 				}
-/******/ 			});
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -206,7 +162,8 @@ eval("throw new Error(\"Module build failed (from ./node_modules/css-loader/dist
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	__webpack_require__("./client.jsx");
-/******/ 	var __webpack_exports__ = __webpack_require__("./GuGuDan.jsx");
+/******/ 	__webpack_require__("./GuGuDan.jsx");
+/******/ 	var __webpack_exports__ = __webpack_require__("./gugudan.css");
 /******/ 	
 /******/ })()
 ;
