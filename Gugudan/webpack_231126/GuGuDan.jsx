@@ -1,6 +1,6 @@
 const React = require('react');
-// const { Component } = React;
 
+const { Component } = React;
 
 
 // 구구단 코드 

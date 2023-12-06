@@ -3,7 +3,7 @@ const path = require('path');
 // HTML Plugin 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // outer CSS loader
-const MiniCssExtractPlaugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   name: 'GuGuDan Game',
@@ -42,7 +42,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
-    new MiniCssExtractPlaugin({
+    new MiniCssExtractPlugin({
       filename: 'gugudan.css', 
     }),
   ],
