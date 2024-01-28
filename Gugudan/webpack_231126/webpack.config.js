@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.css?/,
-        // use: ['style-loader', 'css-loader'], // inernal css loader
+        // use: ['style-loader', 'css-loader'], // internal css loader
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],

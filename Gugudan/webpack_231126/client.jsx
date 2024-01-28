@@ -6,7 +6,7 @@ const ReactDOM = require('react-dom/client');
 // import './gugudan.css';
 
 // 분리
-const GuGuDan = require('./GuGuDan.jsx');
+const GuGuDan = require('./gugudan.jsx');
 
 
 
